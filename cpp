@@ -1,1 +1,73 @@
+#include <iostream>
+using namespace std;
+
+
+int main(int argc, const char * argv[]) {
+
+    int n,m;
+    cin>>n>>m;
+    int a[n][m];
+    int b[n+2][m+2];
+  
+    
+    for(int i=0;i<n+2;i++)
+    {
+        for(int j=0;j<m+2;j++)
+        {
+            b[i][j]=0;
+        }
+    }
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            cin>>a[i][j];
+        }
+    }
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+           if(a[i][j]==1)
+           {
+               b[i][j+1]+=1;
+               b[i+1][j]+=1;
+               b[i+1][j+1]+=1;
+               b[i+1][j+2]+=1;
+               b[i+2][j+1]+=1;
+           }
+           if(a[i][j]==2)
+               
+           {
+               for(int k=0;k<n;k++)
+               {
+                   b[k+1][j+1]+=1;
+               }
+               for(int k=0;k<m;k++)
+               {
+                   b[i+1][k+1]+=1;
+               }
+               b[i+1][j+1]-=1;
+           }
+        }
+        
+    }
+    
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            cout<<b[i+1][j+1]<<" ";
+        }
+        cout<<endl;
+    }
+        
+        
+        
+        
+    
+    return 0;
+}
 
